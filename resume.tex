@@ -1,0 +1,116 @@
+\documentclass[9.5pt, letterpaper]{article}
+\usepackage[top=0.4in, bottom=0.4in, left=0.55in, right=0.55in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{inputenc}
+\usepackage{lmodern}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\renewcommand{\section}[1]{%
+  \vspace{6pt}{\large\textbf{#1}}\\\vspace{-8pt}\\\noindent\rule{\linewidth}{0.4pt}\vspace{2pt}%
+}
+
+\newenvironment{tightlist}{
+  \begin{list}{$\bullet$}{
+    \setlength{\topsep}{1pt}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\leftmargin}{1.2em}
+  }
+}{\end{list}}
+
+\begin{document}
+
+% ── Header ───────────────────────────────────────────────────────────────────
+\begin{center}
+{\LARGE\textbf{SAMBHAV SHRESTHA}}\\[3pt]
+sambhavshrestha111@gmail.com \textbar{}
+New York, NY, USA \textbar{}
+\href{https://linkedin.com/in/sambhav101}{linkedin.com/in/sambhav101} \textbar{}
+\href{https://sambhav101.github.io}{sambhav101.github.io}
+\end{center}
+
+% ── Education ────────────────────────────────────────────────────────────────
+\section{EDUCATION}
+
+\textbf{Stony Brook University - SUNY} \hfill August 2025 - June 2027\\
+\textit{Master's, Computer Science}\\
+{\small Computer Vision, Natural Language Processing, Quantum Computing, Computer Architecture \& Assembly, Operating Systems}
+
+\smallskip
+
+\textbf{St. Joseph's College New York} \hfill September 2018 - June 2022\\
+\textit{Bachelor's, Computer Science and Mathematics} \hfill \textit{GPA: 3.93}\\
+{\small Advanced Algorithms \& Programming, Advanced Databases, Multivariable Calculus, Linear Algebra, Probability \& Statistics}
+
+% ── Professional Experience ───────────────────────────────────────────────────
+\section{PROFESSIONAL EXPERIENCE}
+
+\textbf{HCL Technologies} \hfill March 2024 - July 2025\\
+\textit{ML Infra Engineer at Meta} \hfill \textit{New York, NY, USA}
+\begin{tightlist}
+  \item Architected and deployed \textbf{Sherlock}, a RAG-powered assistant that autonomously resolves infrastructure queries from engineers and research scientists, reducing escalation volume and accelerating onboarding
+  \item Engineered monitoring systems and a doctor tool to track production LLM health, setting up real-time alerting for entropy explosions, weight deviations, and throughput degradation
+  \item Provided end-to-end infrastructure support to Research Scientists and ML Engineers across the full experimentation and model deployment lifecycle
+\end{tightlist}
+
+\smallskip
+
+\textbf{Tarifica} \hfill June 2023 - February 2024\\
+\textit{Software/Data Engineer} \hfill \textit{New York, NY, USA}
+\begin{tightlist}
+  \item Built 300+ web scrapers using Python and BeautifulSoup and designed Flask-based ETL pipelines to ingest, process, and route structured data to downstream analytics systems stored in PostgreSQL
+\end{tightlist}
+
+\smallskip
+
+\textbf{Amazon} \hfill July 2022 - March 2023\\
+\textit{Software Development Engineer} \hfill \textit{Seattle, WA, USA}
+\begin{tightlist}
+  \item Designed and operated mission-critical microservices on AWS (EC2, Lambda, CloudWatch) powering Amazon Go and Just Walk Out retail stores
+  \item Led migration of a high-traffic service to AWS, reducing costs, latency, and support tickets while improving reliability through automated CI/CD pipelines
+  \item Delivered production features across Java, Kotlin, Python, TypeScript, and Ruby in a Linux environment
+\end{tightlist}
+
+\smallskip
+
+\textbf{Microsoft} \hfill June 2021 - July 2021\\
+\textit{Data Science Student Research Fellow} \hfill \textit{New York, NY, USA}
+\begin{tightlist}
+  \item Extended the Financial Times police complaints study using R, uncovering novel race and gender patterns across datasets from NYC, Chicago, and Philadelphia
+  \item Built regression and ML models to surface insights, presenting findings through compelling visualizations to data scientists and engineers at Microsoft Research
+\end{tightlist}
+
+% ── Research & Projects ───────────────────────────────────────────────────────
+\section{RESEARCH \& PROJECTS}
+
+\textbf{Sherlock — Agentic AI System at Meta} \hfill \textit{Python, LLaMA, RAG, PyTorch}
+\begin{tightlist}
+  \item Built a production Agentic AI system fine-tuned on Meta's internal Workplace forum data, combining RAG with agentic reasoning to autonomously resolve ML infrastructure queries for engineers and research scientists
+\end{tightlist}
+
+\smallskip
+
+\textbf{Argument Quality Ranking: LLMs vs. Fine-Tuned RoBERTa} \hfill \textit{PyTorch, Hugging Face, scikit-learn}
+\begin{tightlist}
+  \item Developed RoBERTa v3 with margin ranking loss and test-time pair flipping, achieving 0.657 accuracy, matching GPT-4.5 (0.665) at a fraction of the cost; released on Hugging Face
+\end{tightlist}
+
+\smallskip
+
+\textbf{Frequency Prior for Autoregressive Image Generation} \hfill \textit{PyTorch, CUDA, Lightning, wandb}
+\begin{tightlist}
+  \item Researched replacing attention-based transformers with Fourier frequency priors to improve stability, convergence, and visual quality in autoregressive image generation
+\end{tightlist}
+
+
+% ── Skills ────────────────────────────────────────────────────────────────────
+\section{SKILLS}
+
+\textbf{Languages:} Python, PyTorch, Java, Rust, C/C++, Kotlin, TypeScript, R, SQL, Verilog\\
+\textbf{ML / AI:} Transformers, Computer Vision, LLM, CUDA, RAG, TensorFlow, OpenCV, scikit-learn\\
+\textbf{Cloud \& Tools:} AWS, GCP, Docker, Flask, PostgreSQL, Linux/Unix
+
+\end{document}
