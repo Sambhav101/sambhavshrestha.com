@@ -28,19 +28,20 @@
       --pline:   212,160,23;
     }
     [data-theme="light"] {
-      --bg:      #dedad2;
-      --bg2:     #d0ccc4;
-      --bg3:     #c5c1b8;
-      --nav-bg:  rgba(222,218,210,0.92);
-      --gold:    #a87000;
-      --gold2:   #c49000;
-      --text:    #1a1a1f;
-      --muted:   #52525c;
-      --dim:     #888896;
-      --card-bg: rgba(255,255,255,0.52);
-      --card-b:  rgba(0,0,0,0.13);
-      --pcol:    rgba(180,134,11,0.4);
-      --pline:   180,134,11;
+      --bg:      #ababaf;
+      --bg2:     #a0a0a4;
+      --bg3:     #959599;
+      --nav-bg:  rgba(171,171,175,0.93);
+      --gold:    #96620a;
+      --gold2:   #b87a0a;
+      --green:   #1e6b30;
+      --text:    #18181f;
+      --muted:   #48484f;
+      --dim:     #787880;
+      --card-bg: rgba(255,255,255,0.38);
+      --card-b:  rgba(0,0,0,0.14);
+      --pcol:    rgba(150,98,10,0.4);
+      --pline:   150,98,10;
     }
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
@@ -218,13 +219,48 @@
       background:#0a0a0a;font-family:var(--mono);
     }
     [data-theme="light"] .terminal-wrap{background:#111;}
+
+    /* VS Code syntax — dark readable tones instead of neon */
+    [data-theme="light"] .syn-kw {color:#7a1fa8;}
+    [data-theme="light"] .syn-mod{color:#006b55;}
+    [data-theme="light"] .syn-fn {color:#5c4a00;}
+    [data-theme="light"] .syn-str{color:#8b3010;}
+    [data-theme="light"] .syn-cmt{color:#3a6e3a;}
+    [data-theme="light"] .syn-num{color:#1a5c1a;}
+    [data-theme="light"] .syn-op {color:#444;}
     [data-theme="light"] .vsc-gutter{border-right-color:rgba(0,0,0,0.1);}
+    [data-theme="light"] .vsc-line{color:var(--text);}
+
+    /* Cards — white with shadow to pop off warm-stone bg */
+    [data-theme="light"] .project-card,
+    [data-theme="light"] .exp-card,
+    [data-theme="light"] .edu-card,
+    [data-theme="light"] .contact-card{
+      background:rgba(255,255,255,0.62);
+      box-shadow:0 2px 14px rgba(0,0,0,0.1),0 1px 3px rgba(0,0,0,0.07);
+    }
     [data-theme="light"] .project-card::after{background:linear-gradient(transparent,var(--bg2));}
+
+    /* Tags — visible against white card */
+    [data-theme="light"] .exp-tag,
+    [data-theme="light"] .edu-tag,
+    [data-theme="light"] .about-skill-tags span{
+      background:rgba(92,74,0,0.09);
+      border-color:rgba(92,74,0,0.22);
+      color:var(--gold);
+    }
+
+    /* Filter bar */
+    [data-theme="light"] .filter-btn{background:rgba(0,0,0,0.06);color:var(--muted);}
+    [data-theme="light"] .filter-btn:hover{background:rgba(0,0,0,0.1);}
+    [data-theme="light"] .filter-btn.active{background:rgba(92,74,0,0.13);color:var(--text);}
+
+    /* GPA + awards — replace neon green with deep forest green */
+    [data-theme="light"] .edu-gpa{background:rgba(30,107,48,0.08);border-color:rgba(30,107,48,0.22);color:var(--green);}
+    [data-theme="light"] .edu-award{background:rgba(30,107,48,0.07);border-color:rgba(30,107,48,0.2);color:var(--green);}
+
+    /* Timeline nodes */
     [data-theme="light"] .exp-node,.edu-node-inner{box-shadow:0 0 0 3px var(--bg2);}
-    [data-theme="light"] .about-skill-tag{background:rgba(0,0,0,0.07);color:var(--muted);}
-    [data-theme="light"] .exp-tag{background:rgba(168,112,0,0.12);color:var(--gold);}
-    [data-theme="light"] .filter-btn{background:rgba(0,0,0,0.05);}
-    [data-theme="light"] .filter-btn.active{background:rgba(168,112,0,0.12);}
     .terminal-bar{
       background:#1a1a1a;padding:11px 16px;
       display:flex;align-items:center;gap:7px;
@@ -907,7 +943,7 @@
         <div class="vsc-gutter"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span></div>
         <div class="vsc-code">
           <div class="vsc-line"><span class="syn-str">"""</span></div>
-          <div class="vsc-line vsc-comment-block"><span class="syn-str">&nbsp;&nbsp;Replaced attention-based transformers with Fourier frequency priors in autoregressive image generation. Improves training stability, convergence speed, and output visual quality.</span></div>
+          <div class="vsc-line vsc-comment-block"><span class="syn-str">&nbsp;&nbsp;Explored swapping self-attention with Fourier frequency priors in autoregressive image generation. Representing tokens in frequency space captures global structure more efficiently, improving training stability, convergence speed, and output image quality.</span></div>
           <div class="vsc-line"><span class="syn-str">"""</span></div>
           <div class="vsc-line">&nbsp;</div>
           <div class="vsc-line"><span class="syn-kw">import</span> <span class="syn-mod">torch</span>, <span class="syn-mod">wandb</span></div>
