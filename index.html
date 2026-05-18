@@ -301,7 +301,7 @@
     .exp-card{
       background:var(--card-bg);border:1px solid var(--card-b);
       border-radius:var(--r);padding:1.4rem 1.6rem;
-      transition:border-color .3s,box-shadow .3s,transform .3s,opacity .3s;
+      transition:border-color .6s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),opacity .6s cubic-bezier(.22,1,.36,1);
       cursor:pointer;
     }
     .exp-timeline:has(.exp-entry:hover) .exp-entry:not(:hover) .exp-card{
@@ -314,13 +314,13 @@
     }
     .exp-details{
       max-height:0;overflow:hidden;opacity:0;
-      transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .3s ease,margin-top .3s;
+      transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .5s cubic-bezier(.22,1,.36,1),margin-top .5s cubic-bezier(.22,1,.36,1);
       margin-top:0;
     }
     .exp-entry:hover .exp-details{max-height:600px;opacity:1;margin-top:.9rem;}
     .exp-chevron{
       color:var(--dim);font-size:.65rem;flex-shrink:0;align-self:center;margin-left:auto;
-      transition:transform .35s,color .2s;
+      transition:transform .6s cubic-bezier(.22,1,.36,1),color .4s;
     }
     .exp-entry:hover .exp-chevron{transform:rotate(180deg);color:var(--gold);}
     .exp-header{display:flex;align-items:center;gap:.85rem;margin-bottom:.65rem;}
