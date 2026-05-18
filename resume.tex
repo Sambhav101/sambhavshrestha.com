@@ -4,12 +4,14 @@
 \usepackage[T1]{fontenc}
 \usepackage{inputenc}
 \usepackage{lmodern}
+\usepackage{microtype}
+\DisableLigatures{encoding = *, family = *}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
 \renewcommand{\section}[1]{%
-  \vspace{6pt}{\large\textbf{#1}}\\\vspace{-8pt}\\\noindent\rule{\linewidth}{0.4pt}\vspace{2pt}%
+  \vspace{6pt}\noindent{\large\textbf{#1}}\par\vspace{-5pt}\noindent\rule{\linewidth}{0.4pt}\vspace{2pt}%
 }
 
 \newenvironment{tightlist}{
@@ -51,9 +53,9 @@ New York, NY, USA \textbar{}
 \textbf{HCL Technologies} \hfill March 2024 - July 2025\\
 \textit{ML Infra Engineer at Meta} \hfill \textit{New York, NY, USA}
 \begin{tightlist}
-  \item Architected and deployed \textbf{Sherlock}, a RAG-powered assistant that autonomously resolves infrastructure queries from engineers and research scientists, reducing escalation volume and accelerating onboarding
-  \item Engineered monitoring systems and a doctor tool to track production LLM health, setting up real-time alerting for entropy explosions, weight deviations, and throughput degradation
-  \item Provided end-to-end infrastructure support to Research Scientists and ML Engineers across the full experimentation and model deployment lifecycle
+  \item Architected and deployed \textbf{Sherlock}, a production agentic AI system built with fine-tuned LLaMA and RAG to autonomously resolve ML infrastructure queries, reducing escalation volume and accelerating onboarding
+  \item Engineered monitoring systems and a doctor tool using PyTorch to track production LLM health, setting up real-time alerting for entropy explosions, weight deviations, and throughput degradation
+  \item Delivered end-to-end infrastructure support across the full experimentation and model deployment lifecycle, spanning CUDA kernels, distributed training, and model optimization
 \end{tightlist}
 
 \smallskip
@@ -61,7 +63,7 @@ New York, NY, USA \textbar{}
 \textbf{Tarifica} \hfill June 2023 - February 2024\\
 \textit{Software/Data Engineer} \hfill \textit{New York, NY, USA}
 \begin{tightlist}
-  \item Built 300+ web scrapers using Python and BeautifulSoup and designed Flask-based ETL pipelines to ingest, process, and route structured data to downstream analytics systems stored in PostgreSQL
+  \item Built 300+ web scrapers using Python and BeautifulSoup and designed Flask-based RESTful ETL pipelines to ingest, transform, and route structured data to downstream PostgreSQL analytics systems with strict latency requirements
 \end{tightlist}
 
 \smallskip
@@ -95,7 +97,7 @@ New York, NY, USA \textbar{}
 
 \textbf{Argument Quality Ranking: LLMs vs. Fine-Tuned RoBERTa} \hfill \textit{PyTorch, Hugging Face, scikit-learn}
 \begin{tightlist}
-  \item Developed RoBERTa v3 with margin ranking loss and test-time pair flipping, achieving 0.657 accuracy, matching GPT-4.5 (0.665) at a fraction of the cost; released on Hugging Face
+  \item Benchmarked fine-tuned RoBERTa against GPT-5.5, Llama 3, and Mistral on pairwise argument quality ranking; developed RoBERTa v3 with margin ranking loss and test-time pair flipping, achieving 0.657 accuracy matching GPT-5.5 (0.665) at a fraction of cost; released on Hugging Face
 \end{tightlist}
 
 \smallskip
@@ -105,6 +107,12 @@ New York, NY, USA \textbar{}
   \item Researched replacing attention-based transformers with Fourier frequency priors to improve stability, convergence, and visual quality in autoregressive image generation
 \end{tightlist}
 
+\smallskip
+
+\textbf{Raft / Paxos Consensus Simulator} \hfill \textit{Go}
+\begin{tightlist}
+  \item Simulated distributed consensus with configurable node counts, network partitions, and leader election; visualized log replication and fault-tolerance under failure scenarios
+\end{tightlist}
 
 % ── Skills ────────────────────────────────────────────────────────────────────
 \section{SKILLS}
