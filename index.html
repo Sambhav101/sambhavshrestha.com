@@ -576,6 +576,12 @@
       .nav-links{display:none;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--nav-bg);padding:1.5rem;gap:1.2rem;backdrop-filter:blur(20px);}
       .nav-links.open{display:flex;}
       .hamburger{display:flex;}
+      .edu-card{grid-template-columns:1fr;grid-template-rows:auto auto;}
+      .edu-badge-col{flex-direction:row;justify-content:flex-start;padding:1.2rem 1.4rem;gap:1rem;border-bottom:1px solid rgba(212,160,23,.12);}
+      .edu-badge-col::before{display:none;}
+      .edu-vdivider{display:none;}
+      .edu-seal{width:48px;height:48px;flex-shrink:0;}
+      .edu-content{padding:1.2rem 1.4rem;}
     }
   </style>
 </head>
@@ -1198,7 +1204,7 @@
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [], mouse = {x:null,y:null};
-  const N=90, MAX_D=170, REP=95;
+  const N=window.innerWidth<780?25:90, MAX_D=170, REP=95;
   function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
   resize(); window.addEventListener('resize',resize);
   window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
