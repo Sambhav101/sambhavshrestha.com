@@ -255,6 +255,20 @@
       color:var(--gold);
     }
 
+    /* Skills box — lighter bg, darker label text */
+    [data-theme="light"] .about-skill-tags span{
+      background:rgba(255,255,255,0.7);
+      border-color:rgba(0,0,0,0.18);
+      color:var(--text);
+    }
+    [data-theme="light"] .about-skill-label{color:var(--muted);}
+
+    /* VSCode tab — macOS terminal style: light grey bar, dark filename */
+    [data-theme="light"] .vsc-tab{background:#e8e8ec;border-bottom-color:rgba(0,0,0,0.15);}
+    [data-theme="light"] .vsc-fname{color:var(--text);}
+    [data-theme="light"] .vsc-links a{color:var(--muted);}
+    [data-theme="light"] .vsc-title{border-bottom-color:rgba(0,0,0,0.07);}
+
     /* Filter bar */
     [data-theme="light"] .filter-btn{background:rgba(0,0,0,0.06);color:var(--muted);}
     [data-theme="light"] .filter-btn:hover{background:rgba(0,0,0,0.1);}
