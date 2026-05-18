@@ -2,4 +2,4 @@
 
 Personal portfolio website.
 
-Live at: [sambhavshrestha.com](https://sambhavshrestha.com)
+Live at: <a href="https://sambhavshrestha.com" target="_blank">sambhavshrestha.com</a>
