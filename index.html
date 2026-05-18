@@ -52,6 +52,9 @@
     body,nav,section,.timeline-card,.edu-card,.project-card,.skill-group,.stat-card,.contact-card{
       transition:background .3s,background-color .3s,color .3s,border-color .3s;
     }
+    html.theme-transitioning *,html.theme-transitioning *::before,html.theme-transitioning *::after{
+      transition:background-color .4s ease,background .4s ease,color .4s ease,border-color .4s ease,box-shadow .4s ease,fill .4s ease,opacity .4s ease!important;
+    }
 
     /* ── Nav ─────────────────────────────── */
     nav{
@@ -189,6 +192,8 @@
     /* ── Wave dividers ───────────────────── */
     .wave-bottom{position:absolute;bottom:-1px;left:0;right:0;z-index:5;line-height:0;pointer-events:none;}
     .wave-bottom svg{display:block;width:100%;}
+    .wave-fill-bg{fill:var(--bg);}
+    .wave-fill-bg2{fill:var(--bg2);}
     .section-eyebrow{font-family:var(--mono);font-size:.78rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;}
     .section-title{
       font-size:clamp(2.8rem,7vw,6rem);font-weight:800;
@@ -298,14 +303,14 @@
     #experience{background:var(--bg2);}
     .exp-timeline{max-width:860px;margin:0 auto;position:relative;}
     .exp-timeline::before{
-      content:'';position:absolute;left:20px;top:28px;bottom:28px;width:1px;
+      content:'';position:absolute;left:55px;top:28px;bottom:28px;width:1px;
       background:linear-gradient(to bottom,transparent 0%,rgba(212,160,23,.38) 8%,rgba(212,160,23,.38) 92%,transparent 100%);
       pointer-events:none;
     }
-    .exp-entry{position:relative;padding-left:60px;padding-bottom:2rem;}
+    .exp-entry{position:relative;padding-left:90px;padding-bottom:2rem;}
     .exp-entry:last-child{padding-bottom:0;}
     .exp-node{
-      position:absolute;left:12px;top:22px;
+      position:absolute;left:47px;top:14px;
       width:16px;height:16px;border-radius:50%;
       background:var(--bg2);border:2px solid var(--gold);
       box-shadow:0 0 0 4px rgba(212,160,23,.1),0 0 12px rgba(212,160,23,.35);
@@ -354,18 +359,40 @@
     .exp-tag{background:rgba(212,160,23,.07);border:1px solid rgba(212,160,23,.18);border-radius:4px;padding:2px 9px;font-family:var(--mono);font-size:.68rem;color:var(--gold);}
 
 
+    /* ── Timeline year labels ───────────── */
+    .exp-year,.edu-year{
+      position:absolute;font-family:var(--mono);font-size:.72rem;font-weight:600;
+      color:var(--gold);opacity:.9;white-space:nowrap;
+      letter-spacing:.05em;pointer-events:none;text-align:right;
+    }
+    .exp-year{left:0;width:42px;top:16px;}
+    .edu-year{left:0;width:52px;top:16px;}
+    @media(max-width:780px){.exp-year,.edu-year{display:none;}}
+
+    /* ── Experience: touch accordion ───── */
+    @media(pointer:coarse){
+      .exp-entry:hover .exp-details{grid-template-rows:0fr;opacity:0;margin-top:0;}
+      .exp-entry:hover .exp-chevron{transform:none;color:var(--dim);}
+      .exp-entry:hover .exp-card{border-color:var(--card-b);box-shadow:none;transform:none;}
+      .exp-timeline:has(.exp-entry:hover) .exp-entry:not(:hover) .exp-card{opacity:1;transform:none;}
+      .exp-entry.expanded .exp-details{grid-template-rows:1fr;opacity:1;margin-top:.9rem;}
+      .exp-entry.expanded .exp-chevron{transform:rotate(180deg);color:var(--gold);}
+      .exp-entry.expanded .exp-card{border-color:rgba(212,160,23,.38);box-shadow:0 16px 50px rgba(212,160,23,.1);}
+      .exp-timeline:has(.exp-entry.expanded) .exp-entry:not(.expanded) .exp-card{opacity:.45;transform:scale(0.98);}
+    }
+
     /* ── Education ───────────────────────── */
     #education{background:var(--bg);}
     .edu-timeline{max-width:900px;margin:0 auto;position:relative;}
     .edu-timeline::before{
-      content:'';position:absolute;left:30px;top:52px;bottom:52px;width:1px;
+      content:'';position:absolute;left:65px;top:52px;bottom:52px;width:1px;
       background:linear-gradient(to bottom,transparent 0%,rgba(212,160,23,.38) 12%,rgba(212,160,23,.38) 88%,transparent 100%);
       pointer-events:none;
     }
-    .edu-entry{position:relative;padding-left:74px;padding-bottom:2rem;}
+    .edu-entry{position:relative;padding-left:104px;padding-bottom:2rem;}
     .edu-entry:last-child{padding-bottom:0;}
     .edu-node{
-      position:absolute;left:22px;top:44px;
+      position:absolute;left:57px;top:14px;
       width:16px;height:16px;border-radius:50%;
       background:var(--bg);border:2px solid var(--gold);
       box-shadow:0 0 0 4px rgba(212,160,23,.1),0 0 12px rgba(212,160,23,.38);
@@ -550,6 +577,8 @@
       .project-card.featured{grid-column:span 1;}
       .project-feat-body{flex-direction:column;}
       .project-feat-aside{width:100%;border-left:none;border-top:1px solid rgba(212,160,23,.12);padding-left:0;padding-top:1rem;}
+      .contact-cards{flex-direction:column;align-items:stretch;}
+      .contact-card{justify-content:flex-start;}
     }
     @media(max-width:760px){.skills-grid{grid-template-columns:1fr 1fr;}}
     @media(max-width:500px){.skills-grid{grid-template-columns:1fr;}}
@@ -598,6 +627,8 @@
       .hamburger{display:flex;}
       .exp-timeline::before,.edu-timeline::before{display:none;}
       .exp-node,.edu-node{display:none;}
+      .exp-entry{padding-left:0;}
+      .edu-entry{padding-left:0;}
       .edu-card{grid-template-columns:1fr;grid-template-rows:auto auto;}
       .edu-badge-col{flex-direction:row;justify-content:flex-start;padding:1.2rem 1.4rem;gap:1rem;border-bottom:1px solid rgba(212,160,23,.12);}
       .edu-badge-col::before{display:none;}
@@ -653,7 +684,7 @@
   <a href="#about" class="scroll-indicator">
     <span>scroll</span><div class="bar"></div>
   </a>
-  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path style="fill:var(--bg)" d="M0,20 C360,70 1080,0 1440,40 L1440,70 L0,70 Z"/></svg></div>
+  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path class="wave-fill-bg" d="M0,20 C360,70 1080,0 1440,40 L1440,70 L0,70 Z"/></svg></div>
 </section>
 <!-- ── About ─────────────────────────────────────────────────────────────── -->
 <section id="about">
@@ -689,7 +720,7 @@
       <div class="terminal-body" id="terminal-body"></div>
     </div>
   </div>
-  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path style="fill:var(--bg2)" d="M0,50 C400,0 900,70 1440,25 L1440,70 L0,70 Z"/></svg></div>
+  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path class="wave-fill-bg2" d="M0,50 C400,0 900,70 1440,25 L1440,70 L0,70 Z"/></svg></div>
 </section>
 
 <!-- ── Experience ──────────────────────────────────────────────────────────── -->
@@ -701,6 +732,7 @@
   <div class="exp-timeline">
 
     <div class="exp-entry" data-anim="up">
+      <div class="exp-year">2025</div>
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
@@ -733,6 +765,7 @@
     </div>
 
     <div class="exp-entry" data-anim="up" style="transition-delay:.12s">
+      <div class="exp-year">2024</div>
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
@@ -764,6 +797,7 @@
     </div>
 
     <div class="exp-entry" data-anim="up" style="transition-delay:.24s">
+      <div class="exp-year">2023</div>
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
@@ -795,6 +829,7 @@
     </div>
 
     <div class="exp-entry" data-anim="up" style="transition-delay:.36s">
+      <div class="exp-year">2021</div>
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
@@ -825,7 +860,7 @@
     </div>
 
   </div>
-  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path style="fill:var(--bg)" d="M0,30 C500,75 900,0 1440,50 L1440,70 L0,70 Z"/></svg></div>
+  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path class="wave-fill-bg" d="M0,30 C500,75 900,0 1440,50 L1440,70 L0,70 Z"/></svg></div>
 </section>
 
 <!-- ── Education ────────────────────────────────────────────────────────── -->
@@ -837,6 +872,7 @@
   <div class="edu-timeline">
 
     <div class="edu-entry" data-anim="up">
+      <div class="edu-year">2027</div>
       <div class="edu-node"></div>
       <div class="edu-card">
         <div class="edu-badge-col">
@@ -869,6 +905,7 @@
     </div>
 
     <div class="edu-entry" data-anim="up" style="transition-delay:.15s">
+      <div class="edu-year">2022</div>
       <div class="edu-node"></div>
       <div class="edu-card">
         <div class="edu-badge-col">
@@ -905,7 +942,7 @@
     </div>
 
   </div>
-  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path style="fill:var(--bg2)" d="M0,55 C300,0 1000,70 1440,20 L1440,70 L0,70 Z"/></svg></div>
+  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path class="wave-fill-bg2" d="M0,55 C300,0 1000,70 1440,20 L1440,70 L0,70 Z"/></svg></div>
 </section>
 
 <!-- ── Projects ─────────────────────────────────────────────────────────── -->
@@ -1129,7 +1166,7 @@
       <i class="fas fa-chevron-down"></i>
     </button>
   </div>
-  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path style="fill:var(--bg)" d="M0,15 C480,70 960,0 1440,45 L1440,70 L0,70 Z"/></svg></div>
+  <div class="wave-bottom"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path class="wave-fill-bg" d="M0,15 C480,70 960,0 1440,45 L1440,70 L0,70 Z"/></svg></div>
 </section>
 
 <!-- ── Contact ───────────────────────────────────────────────────────────── -->
@@ -1325,6 +1362,17 @@ window.addEventListener('scroll',()=>{
   });
 });
 
+// ── Experience touch accordion ──────────────────────────────────────────
+if(window.matchMedia('(pointer:coarse)').matches){
+  document.querySelectorAll('.exp-entry').forEach(entry=>{
+    entry.addEventListener('click',()=>{
+      const open=entry.classList.contains('expanded');
+      document.querySelectorAll('.exp-entry').forEach(e=>e.classList.remove('expanded'));
+      if(!open) entry.classList.add('expanded');
+    });
+  });
+}
+
 // ── Experience tabs ─────────────────────────────────────────────────────
 function switchExp(idx,btn){
   document.querySelectorAll('.exp-tab').forEach(t=>t.classList.remove('active'));
@@ -1481,9 +1529,13 @@ document.querySelectorAll('.fade-in').forEach(el=>animObs.observe(el));
 function toggleTheme(){
   const h=document.documentElement;
   const light=h.getAttribute('data-theme')!=='light';
-  h.setAttribute('data-theme',light?'light':'dark');
-  document.getElementById('theme-icon').className=light?'fas fa-sun':'fas fa-moon';
-  localStorage.setItem('theme',light?'light':'dark');
+  h.classList.add('theme-transitioning');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    h.setAttribute('data-theme',light?'light':'dark');
+    document.getElementById('theme-icon').className=light?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('theme',light?'light':'dark');
+    setTimeout(()=>h.classList.remove('theme-transitioning'),420);
+  }));
 }
 (function(){
   const s=localStorage.getItem('theme')||'dark';
