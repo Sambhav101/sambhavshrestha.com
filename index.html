@@ -313,11 +313,12 @@
       transform:translateX(5px);
     }
     .exp-details{
-      max-height:0;overflow:hidden;opacity:0;
-      transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .5s cubic-bezier(.22,1,.36,1),margin-top .5s cubic-bezier(.22,1,.36,1);
+      display:grid;grid-template-rows:0fr;opacity:0;
+      transition:grid-template-rows .65s cubic-bezier(.22,1,.36,1),opacity .5s cubic-bezier(.22,1,.36,1),margin-top .5s cubic-bezier(.22,1,.36,1);
       margin-top:0;
     }
-    .exp-entry:hover .exp-details{max-height:600px;opacity:1;margin-top:.9rem;}
+    .exp-details-inner{overflow:hidden;}
+    .exp-entry:hover .exp-details{grid-template-rows:1fr;opacity:1;margin-top:.9rem;}
     .exp-chevron{
       color:var(--dim);font-size:.65rem;flex-shrink:0;align-self:center;margin-left:auto;
       transition:transform .6s cubic-bezier(.22,1,.36,1),color .4s;
@@ -700,6 +701,7 @@
           <span><i class="fas fa-clock"></i> 16 months</span>
         </div>
         <div class="exp-details">
+          <div class="exp-details-inner">
           <ul class="exp-bullets">
             <li>Architected and deployed <strong>Sherlock</strong>, a production <strong>Agentic AI</strong> system — fine-tuned LLaMA on Meta's internal Workplace forum data and combined it with RAG to autonomously resolve ML infrastructure queries, reducing escalation volume and accelerating onboarding</li>
             <li>Engineered monitoring systems and a <strong>doctor tool</strong> to track production LLM health, with real-time alerting for entropy explosions, weight deviations, and throughput degradation</li>
@@ -708,6 +710,7 @@
           </ul>
           <div class="exp-tags">
             <span class="exp-tag">Agentic AI</span><span class="exp-tag">LLaMA</span><span class="exp-tag">RAG</span><span class="exp-tag">PyTorch</span><span class="exp-tag">Python</span><span class="exp-tag">Monitoring</span>
+          </div>
           </div>
         </div>
       </div>
@@ -730,6 +733,7 @@
           <span><i class="fas fa-clock"></i> 9 months</span>
         </div>
         <div class="exp-details">
+          <div class="exp-details-inner">
           <ul class="exp-bullets">
             <li>Architected and maintained <strong>300+ web scrapers</strong> using Python and BeautifulSoup, transforming raw data from heterogeneous sources into structured PostgreSQL records</li>
             <li>Designed scalable ETL pipelines with Flask to validate, process, and route high-fidelity data to downstream analytics and visualization systems</li>
@@ -737,6 +741,7 @@
           </ul>
           <div class="exp-tags">
             <span class="exp-tag">Python</span><span class="exp-tag">Flask</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">ETL</span><span class="exp-tag">BeautifulSoup</span>
+          </div>
           </div>
         </div>
       </div>
@@ -759,6 +764,7 @@
           <span><i class="fas fa-clock"></i> 9 months</span>
         </div>
         <div class="exp-details">
+          <div class="exp-details-inner">
           <ul class="exp-bullets">
             <li>Designed and operated mission-critical microservices on <strong>AWS (EC2, Lambda, CloudWatch)</strong> powering Amazon Go and Just Walk Out retail stores</li>
             <li>Led end-to-end migration of a high-traffic service to AWS, delivering reductions in cost, latency, and support tickets through automated CI/CD</li>
@@ -766,6 +772,7 @@
           </ul>
           <div class="exp-tags">
             <span class="exp-tag">AWS</span><span class="exp-tag">Java</span><span class="exp-tag">Kotlin</span><span class="exp-tag">Python</span><span class="exp-tag">CI/CD</span>
+          </div>
           </div>
         </div>
       </div>
@@ -788,12 +795,14 @@
           <span><i class="fas fa-clock"></i> 2 months</span>
         </div>
         <div class="exp-details">
+          <div class="exp-details-inner">
           <ul class="exp-bullets">
             <li>Extended the Financial Times police complaints study, conducting rigorous statistical analysis of officer-victim race and gender dynamics across NYC, Chicago, and Philadelphia datasets</li>
             <li>Developed regression and ML models in R to surface novel patterns, delivering findings through publication-quality visualizations to researchers at MSR</li>
           </ul>
           <div class="exp-tags">
             <span class="exp-tag">R</span><span class="exp-tag">ggplot2</span><span class="exp-tag">tidyverse</span><span class="exp-tag">Statistics</span>
+          </div>
           </div>
         </div>
       </div>
