@@ -456,7 +456,7 @@
     }
     .vsc-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
     .lang-py{background:#3572A5;}.lang-v{background:#b2b7f8;}
-    .lang-r{background:#198CE7;}.lang-go{background:#00ACD7;}
+    .lang-r{background:#198CE7;}.lang-rust{background:#dea584;}
     .vsc-fname{font-family:var(--mono);font-size:.7rem;color:var(--muted);flex:1;}
     .vsc-links{display:flex;gap:.6rem;margin-left:auto;}
     .vsc-links a{color:var(--dim);font-size:.9rem;text-decoration:none;transition:color .2s;}
@@ -676,7 +676,7 @@
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
-          <img src="logo_meta.png" alt="Meta" class="exp-logo"/>
+          <img src="images/logo_meta.png" alt="Meta" class="exp-logo"/>
           <div class="exp-header-text">
             <div class="exp-company">HCL Technologies <span class="exp-at">· embedded at Meta</span></div>
             <div class="exp-role">ML Infrastructure Engineer</div>
@@ -706,7 +706,7 @@
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
-          <img src="logo_tarifica.png" alt="Tarifica" class="exp-logo"/>
+          <img src="images/logo_tarifica.png" alt="Tarifica" class="exp-logo"/>
           <div class="exp-header-text">
             <div class="exp-company">Tarifica</div>
             <div class="exp-role">Software / Data Engineer</div>
@@ -735,7 +735,7 @@
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
-          <img src="logo_amazon.png" alt="Amazon" class="exp-logo"/>
+          <img src="images/logo_amazon.png" alt="Amazon" class="exp-logo"/>
           <div class="exp-header-text">
             <div class="exp-company">Amazon</div>
             <div class="exp-role">Software Development Engineer</div>
@@ -764,7 +764,7 @@
       <div class="exp-node"></div>
       <div class="exp-card">
         <div class="exp-header">
-          <img src="logo_microsoft.png" alt="Microsoft" class="exp-logo"/>
+          <img src="images/logo_microsoft.png" alt="Microsoft" class="exp-logo"/>
           <div class="exp-header-text">
             <div class="exp-company">Microsoft Research <span class="exp-at">· DS3</span></div>
             <div class="exp-role">Data Science Research Fellow</div>
@@ -804,7 +804,7 @@
       <div class="edu-node"></div>
       <div class="edu-card">
         <div class="edu-badge-col">
-          <div class="edu-seal"><img src="logo_sbu.png" alt="Stony Brook University"/></div>
+          <div class="edu-seal"><img src="images/logo_sbu.png" alt="Stony Brook University"/></div>
           <div class="edu-deg-abbr">M.S.</div>
           <div class="edu-yr">2025<br>2027</div>
         </div>
@@ -836,7 +836,7 @@
       <div class="edu-node"></div>
       <div class="edu-card">
         <div class="edu-badge-col">
-          <div class="edu-seal"><img src="logo_sjc.png" alt="St. Joseph's College"/></div>
+          <div class="edu-seal"><img src="images/logo_sjc.png" alt="St. Joseph's College"/></div>
           <div class="edu-deg-abbr">B.S.</div>
           <div class="edu-yr">2018<br>2022</div>
         </div>
@@ -987,7 +987,7 @@
     </div>
 
     <div class="project-card" data-cat="systems">
-      <div class="vsc-tab"><span class="vsc-dot lang-go"></span><span class="vsc-fname">consensus_sim.go</span><div class="vsc-links"><a href="https://github.com/Sambhav101" target="_blank"><i class="fab fa-github"></i></a></div></div>
+      <div class="vsc-tab"><span class="vsc-dot lang-rust"></span><span class="vsc-fname">consensus_sim.rs</span><div class="vsc-links"><a href="https://github.com/Sambhav101" target="_blank"><i class="fab fa-github"></i></a></div></div>
       <div class="vsc-title">Raft / Paxos Consensus Simulator</div>
       <div class="vsc-editor">
         <div class="vsc-gutter"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span></div>
@@ -996,20 +996,19 @@
           <div class="vsc-line vsc-comment-block"><span class="syn-cmt">&nbsp;* Simulates distributed consensus with configurable node counts, network partitions, and leader election. Visualizes log replication and fault-tolerance under failure scenarios.</span></div>
           <div class="vsc-line"><span class="syn-cmt">&nbsp;*/</span></div>
           <div class="vsc-line">&nbsp;</div>
-          <div class="vsc-line"><span class="syn-kw">import</span> (</div>
-          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syn-str">"raft"</span>; <span class="syn-str">"paxos"</span>; <span class="syn-str">"net"</span></div>
-          <div class="vsc-line">)</div>
+          <div class="vsc-line"><span class="syn-kw">use</span> <span class="syn-mod">raft</span>::{<span class="syn-mod">Cluster</span>, <span class="syn-mod">Config</span>};</div>
+          <div class="vsc-line"><span class="syn-kw">use</span> <span class="syn-mod">paxos</span>::<span class="syn-mod">PhaseOne</span>;</div>
           <div class="vsc-line">&nbsp;</div>
-          <div class="vsc-line"><span class="syn-kw">func</span> <span class="syn-fn">Simulate</span>(nodes <span class="syn-mod">int</span>) {</div>
-          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;cluster <span class="syn-op">:=</span> raft.<span class="syn-fn">NewCluster</span>(nodes)</div>
-          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;cluster.<span class="syn-fn">InjectPartition</span>(<span class="syn-num">0.3</span>)</div>
-          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;leader <span class="syn-op">:=</span> cluster.<span class="syn-fn">Elect</span>()</div>
-          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;leader.<span class="syn-fn">ReplicateLog</span>(entries)</div>
-          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;paxos.<span class="syn-fn">RunPhaseOne</span>(cluster)</div>
+          <div class="vsc-line"><span class="syn-kw">pub async fn</span> <span class="syn-fn">simulate</span>(nodes: <span class="syn-mod">usize</span>) {</div>
+          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syn-kw">let mut</span> cluster <span class="syn-op">=</span> Cluster::<span class="syn-fn">new</span>(nodes);</div>
+          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;cluster.<span class="syn-fn">inject_partition</span>(<span class="syn-num">0.3_f64</span>);</div>
+          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syn-kw">let</span> leader <span class="syn-op">=</span> cluster.<span class="syn-fn">elect</span>().<span class="syn-kw">await</span>;</div>
+          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;leader.<span class="syn-fn">replicate_log</span>(<span class="syn-op">&amp;</span>entries).<span class="syn-kw">await</span>;</div>
+          <div class="vsc-line">&nbsp;&nbsp;&nbsp;&nbsp;PhaseOne::<span class="syn-fn">run</span>(<span class="syn-op">&amp;</span>cluster).<span class="syn-kw">await</span>;</div>
           <div class="vsc-line">}</div>
         </div>
       </div>
-      <div class="vsc-statusbar"><span class="vsc-lang">Go</span><span>UTF-8</span><span>Ln 18</span></div>
+      <div class="vsc-statusbar"><span class="vsc-lang">Rust · Python · TOML</span><span>UTF-8</span><span>Ln 14</span></div>
     </div>
 
     <div class="project-card" data-cat="systems">
