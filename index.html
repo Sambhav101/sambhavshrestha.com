@@ -585,7 +585,9 @@
     @media(max-width:500px){.skills-grid{grid-template-columns:1fr;}}
 
     /* ── Chatbot ─────────────────────────── */
-    #chatbot-container{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;display:flex;flex-direction:column;align-items:flex-end;gap:.9rem;}
+    #chatbot-container{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;display:flex;flex-direction:column;align-items:flex-end;gap:.9rem;pointer-events:none;}
+    #chat-toggle{pointer-events:auto;}
+    #chat-panel:not(.chat-hidden){pointer-events:auto;}
     #chat-toggle{
       height:48px;padding:0 1.2rem;border-radius:24px;
       background:var(--bg2);border:1.5px solid var(--gold);
@@ -601,7 +603,7 @@
     #chat-toggle i{font-size:1rem;}
     @keyframes chat-float{0%,100%{transform:translateY(0);box-shadow:0 4px 24px rgba(212,160,23,.28);}50%{transform:translateY(-7px);box-shadow:0 10px 32px rgba(212,160,23,.42);}}
     #chat-panel{
-      width:360px;height:480px;background:var(--bg2);
+      width:360px;height:min(480px,calc(100dvh - 7rem));background:var(--bg2);
       border:1px solid var(--card-b);border-radius:var(--r);
       display:flex;flex-direction:column;overflow:hidden;
       box-shadow:0 20px 60px rgba(0,0,0,.55),0 0 0 1px rgba(212,160,23,.07);
@@ -675,7 +677,12 @@
     }
     #chat-send:hover{background:var(--gold2);transform:scale(1.06);}
     #chat-send:disabled{opacity:.45;cursor:default;transform:none;}
-    @media(max-width:500px){#chat-panel{width:calc(100vw - 3rem);}}
+    @media(max-width:500px){
+      #chatbot-container{bottom:0;right:0;gap:0;}
+      #chat-toggle{margin:0 1rem 1rem auto;}
+      #chat-panel{width:100vw;height:min(460px,70dvh);border-radius:var(--r) var(--r) 0 0;transform-origin:bottom center;}
+      #chat-panel.chat-hidden{transform:translateY(20px) scale(0.97);}
+    }
 
     /* ── Contact ─────────────────────────── */
     #contact{background:var(--bg);}
@@ -1730,7 +1737,7 @@ document.querySelectorAll('.project-card').forEach(card=>{
     if(!text) return;
 
     if(!checkRateLimit()){
-      appendChatMsg('bot','You\'ve hit the daily limit of 15 messages. Come back tomorrow — Sambhav will still be impressive, I promise.');
+      appendChatMsg('bot','Come back tomorrow.');
       input.value='';
       return;
     }
