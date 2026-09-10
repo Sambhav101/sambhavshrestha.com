@@ -1,6 +1,6 @@
 # Portfolio v3 redesign — DESIGN.md
 
-Status: approved 2026-09-10. Living doc; update when a decision changes.
+Status: approved 2026-09-10, built on branch feat/v3-redesign. Living doc; update when a decision changes.
 
 ## Problem & goals
 
