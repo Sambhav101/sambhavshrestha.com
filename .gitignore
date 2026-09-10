@@ -4,3 +4,6 @@ CLAUDE.md
 .env
 .vercel
 .superpowers/
+node_modules/
+test-results/
+playwright-report/
