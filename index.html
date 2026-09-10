@@ -11,7 +11,7 @@
 <style>
 /* ---- tokens (closed list, see DESIGN.md) ---- */
 :root{
-  --paper:#fbf9f4; --ink:#1a1c19; --muted:#6a6e67; --line:#e6e3da; --accent:#2f6b45;
+  --paper:#fbf9f4; --ink:#1a1c19; --muted:#60645c; --line:#e6e3da; --accent:#2f6b45;
   --tint-1:#e6ede4; --tint-2:#f0e8d9; --tint-3:#e3e8ee; --tint-4:#eee3e8;
   --serif:"Newsreader",Georgia,"Times New Roman",serif;
   --sans:"Inter",-apple-system,"Helvetica Neue",sans-serif;
@@ -31,10 +31,12 @@ h1,h2,h3,p{margin:0}
 /* ---- text roles ---- */
 .label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .meta{font-family:var(--sans);font-size:13px;color:var(--muted)}
-.link{color:var(--accent);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .15s}
+.link,.link.meta{color:var(--accent);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .15s}
 .link:hover,.link:focus-visible{text-decoration-color:currentColor}
 .pill{display:inline-block;font-family:var(--sans);font-size:13px;font-weight:500;line-height:1;padding:calc(var(--s)*1.25) calc(var(--s)*2);border:1px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;transition:background .15s,color .15s}
 .pill:hover,.pill:focus-visible{background:var(--ink);color:var(--paper)}
+.title{font-size:20px;font-weight:500}
+.desc{margin-top:calc(var(--s)*.5);font-size:16px;color:#33362f}
 
 /* ---- header ---- */
 .site-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s) calc(var(--s)*3);padding:calc(var(--s)*3) 0;border-bottom:1px solid var(--line)}
@@ -57,10 +59,8 @@ h1,h2,h3,p{margin:0}
 .row:last-child{border-bottom:0}
 .row .logo{width:40px;height:40px;flex:0 0 auto;object-fit:contain}
 .row .body{flex:1;min-width:0}
-.row .title{font-size:20px;font-weight:500}
 .row .title .sub{font-weight:400;color:var(--muted)}
 .row .role{color:var(--muted)}
-.row .desc{margin-top:calc(var(--s)*.5);font-size:16px;color:#33362f}
 .row .date{white-space:nowrap;padding-top:4px}
 
 /* ---- grid + card (projects, education) ---- */
@@ -68,9 +68,7 @@ h1,h2,h3,p{margin:0}
 .card{--tint:var(--tint-1);display:flex;flex-direction:column;justify-content:space-between;gap:calc(var(--s)*2);padding:calc(var(--s)*2.5);border-radius:var(--radius);background:var(--tint);transition:transform .15s}
 .card:hover{transform:translateY(-2px)}
 .card-outline{background:transparent;border:1px solid var(--line)}
-.card .title{font-size:20px;font-weight:500}
-.card .desc{margin-top:calc(var(--s)*.5);font-size:16px;color:#33362f}
-.card .foot{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s)}
+.card .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--s)}
 .card .logo{width:40px;height:40px;object-fit:contain;margin-bottom:var(--s)}
 .show-all{margin-top:calc(var(--s)*3)}
 [hidden]{display:none!important}
@@ -81,6 +79,7 @@ h1,h2,h3,p{margin:0}
 .contact .links{display:flex;flex-wrap:wrap;gap:calc(var(--s)*3);font-family:var(--sans);font-size:13px}
 .contact .links a{opacity:.75;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:opacity .15s,text-decoration-color .15s}
 .contact .links a:hover,.contact .links a:focus-visible{opacity:1;text-decoration-color:currentColor}
+.contact :focus-visible{outline-color:var(--paper)}
 
 /* ---- one breakpoint ---- */
 @media (max-width:640px){
@@ -90,7 +89,11 @@ h1,h2,h3,p{margin:0}
   .intro{padding:calc(var(--s)*6) 0 calc(var(--s)*5)}
   .contact .links{gap:var(--s) calc(var(--s)*2)}
 }
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.contact{background:transparent;color:var(--ink)}.contact .links a{opacity:1}}
 </style>
+<noscript><style>#projects .card[hidden]{display:flex!important}.show-all{display:none}</style></noscript>
 </head>
 <body>
 
@@ -111,7 +114,7 @@ h1,h2,h3,p{margin:0}
     <p>Software engineer working on the infrastructure behind machine learning. Recently at Meta; now at Stony Brook for a master's in computer science.</p>
     <div class="actions">
       <a class="pill" href="mailto:sambhavshrestha111@gmail.com">Get in touch</a>
-      <a class="link" href="./resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+      <a class="link" href="./resume.pdf" target="_blank" rel="noopener" aria-label="Résumé (opens in new tab)">Résumé <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -119,7 +122,7 @@ h1,h2,h3,p{margin:0}
     <h2 class="label">Work</h2>
 
     <article class="row">
-      <img class="logo" src="images/logo_meta.png" alt="Meta">
+      <img class="logo" src="images/logo_meta.png" alt="">
       <div class="body">
         <h3 class="title">Meta <span class="sub">via HCL Technologies</span></h3>
         <p class="role">ML Infrastructure Engineer</p>
@@ -129,7 +132,7 @@ h1,h2,h3,p{margin:0}
     </article>
 
     <article class="row">
-      <img class="logo" src="images/logo_tarifica.png" alt="Tarifica">
+      <img class="logo" src="images/logo_tarifica.png" alt="">
       <div class="body">
         <h3 class="title">Tarifica</h3>
         <p class="role">Software &amp; Data Engineer</p>
@@ -139,7 +142,7 @@ h1,h2,h3,p{margin:0}
     </article>
 
     <article class="row">
-      <img class="logo" src="images/logo_amazon.png" alt="Amazon">
+      <img class="logo" src="images/logo_amazon.png" alt="">
       <div class="body">
         <h3 class="title">Amazon</h3>
         <p class="role">Software Development Engineer</p>
@@ -149,7 +152,7 @@ h1,h2,h3,p{margin:0}
     </article>
 
     <article class="row">
-      <img class="logo" src="images/logo_microsoft.png" alt="Microsoft Research">
+      <img class="logo" src="images/logo_microsoft.png" alt="">
       <div class="body">
         <h3 class="title">Microsoft Research <span class="sub">DS3</span></h3>
         <p class="role">Data Science Fellow</p>
@@ -181,7 +184,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">Python · NLP</span>
-          <a class="link meta" href="https://github.com/Sambhav101/Argument-Quality-Ranking" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/Sambhav101/Argument-Quality-Ranking" target="_blank" rel="noopener" aria-label="Argument Quality Ranking on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -192,7 +195,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">Go</span>
-          <a class="link meta" href="https://github.com/Sambhav101" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/Sambhav101" target="_blank" rel="noopener" aria-label="Raft / Paxos Consensus Simulator on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -203,7 +206,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">Verilog</span>
-          <a class="link meta" href="https://github.com/Sambhav101/Cache-enabled-Pipelined-MIPS-Processor" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/Sambhav101/Cache-enabled-Pipelined-MIPS-Processor" target="_blank" rel="noopener" aria-label="Pipelined MIPS Processor on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -214,7 +217,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">Python · PyTorch</span>
-          <a class="link meta" href="https://github.com/Sambhav101/CSE_590_03_VLM" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/Sambhav101/CSE_590_03_VLM" target="_blank" rel="noopener" aria-label="Frequency Prior for Image Generation on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -225,7 +228,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">Python</span>
-          <a class="link meta" href="https://github.com/Sambhav101/Stocks-Prediction-Using-LSTM" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/Sambhav101/Stocks-Prediction-Using-LSTM" target="_blank" rel="noopener" aria-label="Stock Price Prediction on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -236,7 +239,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">R</span>
-          <a class="link meta" href="https://github.com/msr-ds3/officer-complaints-2021-group-6" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/msr-ds3/officer-complaints-2021-group-6" target="_blank" rel="noopener" aria-label="Police Complaints Analysis on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -247,7 +250,7 @@ h1,h2,h3,p{margin:0}
         </div>
         <div class="foot">
           <span class="label">R</span>
-          <a class="link meta" href="https://github.com/Sambhav101/Credit-Card-Fraud-Detection" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="link meta" href="https://github.com/Sambhav101/Credit-Card-Fraud-Detection" target="_blank" rel="noopener" aria-label="Credit Card Fraud Detection on GitHub (opens in new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </article>
     </div>
@@ -263,7 +266,7 @@ h1,h2,h3,p{margin:0}
     <div class="grid">
       <article class="card card-outline">
         <div>
-          <img class="logo" src="images/logo_sbu.png" alt="Stony Brook University">
+          <img class="logo" src="images/logo_sbu.png" alt="">
           <h3 class="title">Stony Brook University</h3>
           <p class="desc">M.S. Computer Science</p>
         </div>
@@ -272,7 +275,7 @@ h1,h2,h3,p{margin:0}
 
       <article class="card card-outline">
         <div>
-          <img class="logo" src="images/logo_sjc.png" alt="St. Joseph's College New York">
+          <img class="logo" src="images/logo_sjc.png" alt="">
           <h3 class="title">St. Joseph's College New York</h3>
           <p class="desc">B.S. Computer Science &amp; Mathematics</p>
           <p class="desc">GPA 3.93 · President's Scholar</p>
@@ -298,8 +301,10 @@ h1,h2,h3,p{margin:0}
 <script>
   // The only script on the page: reveal the four collapsed project cards.
   document.getElementById('show-all').addEventListener('click', function () {
+    var first = document.querySelector('#projects .card[hidden]');
     document.querySelectorAll('#projects .card[hidden]').forEach(function (card) { card.hidden = false; });
     this.hidden = true;
+    if (first) { first.tabIndex = -1; first.focus(); }
   });
 </script>
 

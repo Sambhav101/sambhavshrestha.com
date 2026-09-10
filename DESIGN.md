@@ -87,7 +87,7 @@ None. Content is inline HTML. Draft copy is in the appendix below.
 ```
 --paper:  #fbf9f4   background
 --ink:    #1a1c19   text, contact band, buttons
---muted:  #6a6e67   labels, dates, secondary text
+--muted:  #60645c   labels, dates, secondary text
 --line:   #e6e3da   rules and card borders
 --accent: #2f6b45   links, hover underline, focus ring
 
