@@ -10,6 +10,7 @@ test('page loads with the right title and no console errors', async ({ page }) =
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  await page.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.fulfill({ status: 200, contentType: 'text/css', body: '' }));
   await page.goto(URL);
   await expect(page).toHaveTitle('Sambhav Shrestha');
   expect(errors).toEqual([]);
@@ -65,8 +66,24 @@ test('outbound links are well formed and the resume exists', async ({ page }) =>
   await page.goto(URL);
   const hrefs = await page.locator('a[href]').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
   const allowed = /^(#[a-z]+|mailto:[^@\s]+@[^@\s]+|https:\/\/(github\.com|linkedin\.com)\/\S+|\.\/resume\.pdf)$/;
+  expect(hrefs.length).toBeGreaterThan(0);
   for (const href of hrefs) {
     expect(href, `unexpected href ${href}`).toMatch(allowed);
   }
   expect(fs.existsSync(path.join(ROOT, 'resume.pdf'))).toBe(true);
+});
+
+test('hidden projects are visible without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(URL);
+  await expect(page.locator('#projects .card:visible')).toHaveCount(8);
+  await expect(page.locator('button#show-all')).toBeHidden();
+  await context.close();
+});
+
+test('show all moves focus into the revealed cards', async ({ page }) => {
+  await page.goto(URL);
+  await page.locator('button#show-all').click();
+  expect(await page.evaluate(() => document.activeElement.closest('#projects .card') !== null)).toBe(true);
 });
