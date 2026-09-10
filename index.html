@@ -160,6 +160,100 @@ h1,h2,h3,p{margin:0}
 
   <section class="section" id="projects">
     <h2 class="label">Projects</h2>
+
+    <div class="grid">
+      <article class="card" style="--tint:var(--tint-1)">
+        <div>
+          <h3 class="title">Sherlock</h3>
+          <p class="desc">An AI assistant built at Meta that answers engineers' ML-infrastructure questions, trained on internal forum data.</p>
+        </div>
+        <div class="foot">
+          <span class="label">LLaMA · RAG · PyTorch</span>
+          <span class="meta">internal to Meta</span>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-2)">
+        <div>
+          <h3 class="title">Argument Quality Ranking</h3>
+          <p class="desc">A model that ranks how well-made a written argument is.</p>
+        </div>
+        <div class="foot">
+          <span class="label">Python · NLP</span>
+          <a class="link meta" href="https://github.com/Sambhav101/Argument-Quality-Ranking" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-3)">
+        <div>
+          <h3 class="title">Raft / Paxos Consensus Simulator</h3>
+          <p class="desc">Watch distributed systems agree, disagree, and recover from failures.</p>
+        </div>
+        <div class="foot">
+          <span class="label">Go</span>
+          <a class="link meta" href="https://github.com/Sambhav101" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-4)">
+        <div>
+          <h3 class="title">Pipelined MIPS Processor</h3>
+          <p class="desc">A 32-bit five-stage CPU with caches, built from scratch.</p>
+        </div>
+        <div class="foot">
+          <span class="label">Verilog</span>
+          <a class="link meta" href="https://github.com/Sambhav101/Cache-enabled-Pipelined-MIPS-Processor" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-1)" hidden>
+        <div>
+          <h3 class="title">Frequency Prior for Image Generation</h3>
+          <p class="desc">Replacing attention with a frequency-based prior in image generation models.</p>
+        </div>
+        <div class="foot">
+          <span class="label">Python · PyTorch</span>
+          <a class="link meta" href="https://github.com/Sambhav101/CSE_590_03_VLM" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-2)" hidden>
+        <div>
+          <h3 class="title">Stock Price Prediction</h3>
+          <p class="desc">An LSTM that forecasts stock prices from historical data.</p>
+        </div>
+        <div class="foot">
+          <span class="label">Python</span>
+          <a class="link meta" href="https://github.com/Sambhav101/Stocks-Prediction-Using-LSTM" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-3)" hidden>
+        <div>
+          <h3 class="title">Police Complaints Analysis</h3>
+          <p class="desc">Race and gender patterns in police complaints across NYC, Chicago, and Philadelphia, at Microsoft Research.</p>
+        </div>
+        <div class="foot">
+          <span class="label">R</span>
+          <a class="link meta" href="https://github.com/msr-ds3/officer-complaints-2021-group-6" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="card" style="--tint:var(--tint-4)" hidden>
+        <div>
+          <h3 class="title">Credit Card Fraud Detection</h3>
+          <p class="desc">Catching rare fraudulent transactions in an imbalanced dataset with XGBoost and SMOTE.</p>
+        </div>
+        <div class="foot">
+          <span class="label">R</span>
+          <a class="link meta" href="https://github.com/Sambhav101/Credit-Card-Fraud-Detection" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="show-all">
+      <button class="pill" id="show-all" type="button">Show all 8 projects</button>
+    </div>
   </section>
 
   <section class="section" id="education">
@@ -178,6 +272,14 @@ h1,h2,h3,p{margin:0}
     </div>
   </div>
 </footer>
+
+<script>
+  // The only script on the page: reveal the four collapsed project cards.
+  document.getElementById('show-all').addEventListener('click', function () {
+    document.querySelectorAll('#projects .card[hidden]').forEach(function (card) { card.hidden = false; });
+    this.hidden = true;
+  });
+</script>
 
 </body>
 </html>
