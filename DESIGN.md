@@ -159,7 +159,7 @@ enough that a framework would add tooling without removing work. The deployment 
 
 Playwright smoke test at `tests/smoke.spec.js`, run with `npm test`:
 - Page loads with zero console errors.
-- All six section ids exist.
+- The header plus the five section ids (`#top`, `#work`, `#projects`, `#education`, `#contact`) exist.
 - "Show all" reveals eight `.card` elements inside `#projects`.
 - At 390px viewport, `document.documentElement.scrollWidth <= 390`.
 - Every `href` to a `.pdf` or `github.com` resolves (status < 400) — checked offline via a
